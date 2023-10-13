@@ -6,16 +6,15 @@
 <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🍪</text></svg>"/>
 <title>MAIN SITE</title>
 
-<h3>MAIN SITE - sets cookie 'mainCookie' = timestamp on page load</h3>
-   <p>
-      <a href="javascript:window.location.href=window.location.href">🔃 reload iframe</a>
-   </p>
-   <button onclick="handleCookieAccess()">Click me to try to get cookies(results in console)</button>
-   <br>
-   <button onclick="setMainCookie()">Click to set cookie</button>
-   <br>
-   <button id="permission-trigger-button">permission trigger button</button>
-   <br>
+<button onclick="setMainCookie()">Click to set cookie on main site</button>
+<br><br>
+<h3>MAIN SITE</h3>
+<p><a href="javascript:window.location.href=window.location.href">🔃 reload iframe</a></p>
+<br><br>
+<button onclick="handleCookieAccess()">Click me to try to get cookies(results in console)</button>
+<br><br>
+<button id="permission-trigger-button">permission trigger button</button>
+<br>
 <script>
    console.log('['+document.location.hostname+'] 🍪 Cookies visible to JavaScript at page load: ' + document.cookie);
 
