@@ -7,6 +7,9 @@
 <title>MAIN SITE</title>
 
 <h1>MAIN SITE - sets cookie 'mainCookie' = timestamp on page load</h1>
+   <p>
+      <a href="/request-storage-access.html">🔃 reload iframe</a>
+   </p>
 <script>
    console.log('['+document.location.hostname+'] 🍪 Cookies visible to JavaScript at page load: ' + document.cookie);
    document.cookie = 'mainCookie=' + new Date().toLocaleString();
