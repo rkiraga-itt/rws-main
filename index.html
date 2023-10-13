@@ -24,16 +24,19 @@
         if (!document.hasStorageAccess) {
             // This browser doesn't support the Storage Access API
             // so let's just hope we have access!
+            console.error('Storage Access API not supported');
             doThingsWithCookies();
         } else {
             const hasAccess = await document.hasStorageAccess();
             if (hasAccess) {
                 // We have access to unpartitioned cookies, so let's go
+                console.log('document.hasStorageAccess = true');
                 doThingsWithCookies();
             } else {
                 // Check whether unpartitioned cookie access has been granted
                 // to another same-site embed
                 try {
+                    console.log('document.hasStorageAccess = false, asking for permissions');
                     const permission = await navigator.permissions.query({
                         name: "storage-access",
                     });
@@ -42,12 +45,15 @@
                         // If so, you can just call requestStorageAccess() without a user interaction,
                         // and it will resolve automatically.
                         await document.requestStorageAccess();
+                        console.log('document.hasStorageAccess = false, permission granted');
                         doThingsWithCookies();
                     } else if (permission.state === "prompt") {
+                        console.log('document.hasStorageAccess = false, permission = prompt');
                         const btn = document.getElementById("permission-trigger-button");
                         // Need to call requestStorageAccess() after a user interaction
                         btn.addEventListener("click", async () => {
                             try {
+                                console.log('document.hasStorageAccess = false, permission prompt success');
                                 await document.requestStorageAccess();
                                 doThingsWithCookies();
                             } catch (err) {
@@ -59,6 +65,7 @@
                     } else if (permission.state === "denied") {
                         // User has denied unpartitioned cookie access, so we'll
                         // need to do something else
+                       console.log('document.hasStorageAccess = false, permission prompt failure');
                     }
                 } catch (error) {
                     console.log(`Could not access permission state. Error: ${error}`);
