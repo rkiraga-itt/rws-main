@@ -13,7 +13,7 @@
 <br><br>
 <button onclick="handleCookieAccess()">Click me to try to get cookies(results in console)</button>
 <br><br>
-<button id="permission-trigger-button">permission trigger button</button>
+<button id="permission-trigger-button" style="display: none;">permission trigger button</button>
 <br>
 <script>
    console.log('['+document.location.hostname+'] 🍪 Cookies visible to JavaScript at page load: ' + document.cookie);
@@ -56,6 +56,7 @@
                     } else if (permission.state === "prompt") {
                         console.log('document.hasStorageAccess = false, permission = prompt');
                         const btn = document.getElementById("permission-trigger-button");
+                        btn.style.display = "block";
                         // Need to call requestStorageAccess() after a user interaction
                         btn.addEventListener("click", async () => {
                             try {
